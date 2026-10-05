@@ -11,3 +11,6 @@ managed_components/
 /.agents/skills/passport-build
 /.agents/skills/passport-device-test
 /.agents/skills/passport-debug
+
+# 滑动变祖器：本地 Wi-Fi 对时凭证，不提交
+main/liang_secrets.h

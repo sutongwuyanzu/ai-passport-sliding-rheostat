@@ -42,3 +42,10 @@ CONFIG_BT_NIMBLE_ROLE_OBSERVER=n
 CONFIG_BT_NIMBLE_MAX_CONNECTIONS=1
 CONFIG_BT_NIMBLE_HOST_BASED_PRIVACY=n
 CONFIG_BT_NIMBLE_NVS_PERSIST=n
+
+# --- 滑动变祖器 ---
+# Wi-Fi 对时使用 3 个国内 NTP 服务器（阿里云、腾讯云、cn.pool）。
+CONFIG_LWIP_SNTP_MAX_SERVERS=3
+# 播报期间可能恰好写 NVS（保存强度/时间）：Flash 写入会关闭 cache，
+# 让 I2S 中断留在 IRAM，避免配音断续（硬件指南 8.1）。
+CONFIG_I2S_ISR_IRAM_SAFE=y
