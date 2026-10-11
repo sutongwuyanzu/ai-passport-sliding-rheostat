@@ -32,7 +32,7 @@ The board support and the baseline tree come from FoloToy's MIT firmware. This a
 | Intensity | **UP** / **DOWN** step by 1. Hold to repeat; the repeat speeds up while the key stays down |
 | Appraisal | Short **OK** scans the portrait, stamps it, and plays one line |
 | Ramp | Long **OK** slides to level 30, then appraises. At level 30, long **OK** slides back to 0 and appraises |
-| Tariff | Weekdays 09:00-12:00 and 14:00-18:00, Beijing time, are peak. Weekends, other hours, and listed public holidays are idle |
+| Tariff | Stage 0 (小难梁) is always the DeepSeek highest-price tier. Other stages use Beijing time: weekdays 09:00-12:00 and 14:00-18:00 are peak; weekends, other hours, and listed public holidays are idle |
 | Clock | Wi-Fi SNTP when you compile in credentials. Otherwise the later of the build time and the time saved in NVS. A leading `≈` on the stamp means the clock is estimated |
 | Battery | State of charge from the CW2017 gauge. The indicator hides itself if the gauge is missing |
 | Screen | Dims after one idle minute, backlight off after two. The next press only wakes the screen |

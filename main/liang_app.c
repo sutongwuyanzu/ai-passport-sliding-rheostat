@@ -452,9 +452,12 @@ static void start_announce(void) {
     stop_effect(false);
     liang_civil_time_t now;
     liang_clock_now(&now);
-    const liang_tariff_t tariff = liang_tariff_at(&now);
-    const bool peak = tariff == LIANG_TARIFF_PEAK;
     s_fx_stage = liang_stage_of(s_level);
+    // 小难梁代表 DeepSeek 最高价档，固定使用高峰/原价台词；其余阶段仍按时段计价。
+    const liang_tariff_t tariff = s_fx_stage == 0
+        ? LIANG_TARIFF_PEAK
+        : liang_tariff_at(&now);
+    const bool peak = tariff == LIANG_TARIFF_PEAK;
     s_voice_ms = liang_audio_voice_ms(s_fx_stage, tariff);
     if (s_audio_ok) liang_audio_announce(s_fx_stage, tariff);
 
