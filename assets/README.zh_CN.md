@@ -47,4 +47,4 @@
 | `images/liang/src/stage_{0..5}.png` | 354 × 354 PNG | 六个阶段肖像（小难梁 → 梁祖），从应用作者提供的参考录屏中裁出；每个阶段取稳定帧段中最清晰的一帧，未做时间平均。 |
 | `images/liang/stage_{0..5}.png` / `.rgb565` | 200 × 200 PNG 预览 / 小端 RGB565 原始像素（80 000 字节） | 由 `python3 tools/liang_assets.py` 生成（Lanczos 缩小 + 轻度锐化）。`.rgb565` 通过 `EMBED_FILES` 嵌入，由 `main/liang_assets.c` 包装成 `lv_image_dsc_t`。 |
 | `fonts/liang_font_*.c` | LVGL 9 位图字体，4 bpp，未压缩 | 思源宋体 Noto Serif SC Bold/Black（SIL OFL 1.1）子集，用 `lv_font_conv` 1.5.2 经 `python3 tools/liang_assets.py --fonts --otf-dir <目录> --lv-font-conv <路径>` 生成；每个子集只含该脚本 `FONTS` 中列出的字形。 |
-| `music/liang/stage{0..5}_{peak,idle}.pcm` | 16 kHz、16 bit、单声道、无头 s16le | 小米 MiMo `mimo-v2.5-tts-voicedesign` 按 `music/liang/voices.json` 中的音色描述与台词生成；句中长停顿压缩到 0.28 秒，裁掉首尾静音，响度归一到约 −16 LUFS。通过 `EMBED_FILES` 嵌入，播放时从 Flash 分块读取。 |
+| `music/liang/stage{0..5}_{peak,idle}.pcm` | 16 kHz、16 bit、单声道、无头 s16le | 按 `music/liang/voices.json` 中的阶段音色描述与台词生成；每段台词明确说出当前阶段名，裁掉首尾静音并归一响度。通过 `EMBED_FILES` 嵌入，播放时从 Flash 分块读取。 |

@@ -10,8 +10,8 @@
 #define LIANG_LEVELS_PER_STAGE 6
 
 typedef enum {
-    LIANG_TARIFF_PEAK = 0,   // 高峰时段 → 梁文峰
-    LIANG_TARIFF_IDLE,       // 空闲时段 → 梁文谷
+    LIANG_TARIFF_PEAK = 0,   // 高峰时段
+    LIANG_TARIFF_IDLE,       // 空闲时段
 } liang_tariff_t;
 
 // 本地（北京时间）民用时间。wday: 0=周日 … 6=周六，与 struct tm 一致。

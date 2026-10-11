@@ -1,6 +1,6 @@
 // main/liang_app.c —— 滑动变祖器：上下键拖动「梁系强度」滑杆，肖像随阶段进化；
 // 确定键触发「正脸识别鉴定」，按当前北京时间判定高峰/空闲时段，
-// 盖章「梁文峰 / 梁文谷」并以对应阶段的音色播报。
+// 盖章当前阶段名称，并以同一阶段的台词播报。
 //
 // 按键：
 //   上 / 下   按下即 ±1，长按连续调节（越按越快）
@@ -459,7 +459,8 @@ static void start_announce(void) {
     if (s_audio_ok) liang_audio_announce(s_fx_stage, tariff);
 
     const uint32_t seal = peak ? SEAL_PEAK : SEAL_IDLE;
-    lv_label_set_text(ui.stamp_text, peak ? "梁文峰" : "梁文谷");
+    // 盖章和肖像下方的阶段名保持一致；峰谷信息放在下方标签中。
+    lv_label_set_text(ui.stamp_text, STAGE_NAMES[s_fx_stage]);
     lv_obj_set_style_text_color(ui.stamp_text, lv_color_hex(seal), 0);
     lv_obj_set_style_border_color(ui.stamp, lv_color_hex(seal), 0);
     lv_obj_set_style_border_width(ui.stamp, SEAL_BORDER[s_fx_stage], 0);
@@ -471,7 +472,8 @@ static void start_announce(void) {
                           peak ? "▲ 高峰时段 · 原价" : "▼ 空闲时段 · 五折");
     ESP_LOGI(TAG, "鉴定：强度 %d 阶段 %s，%04d-%02d-%02d %02d:%02d（%s）→ %s",
              s_level, STAGE_NAMES[s_fx_stage], now.year, now.month, now.day,
-             now.hour, now.minute, estimated ? "估算时间" : "已对时", peak ? "梁文峰" : "梁文谷");
+             now.hour, now.minute, estimated ? "估算时间" : "已对时",
+             STAGE_NAMES[s_fx_stage]);
 
     s_mode = MODE_SCANNING;
     s_seq_t0 = lv_tick_get();
@@ -652,8 +654,9 @@ void liang_app_create(bool audio_ok, int initial_level) {
     lv_obj_set_pos(ui.stamp, (FRAME_SIZE - STAMP_W) / 2, STAMP_Y);
     lv_obj_set_style_bg_color(ui.stamp, lv_color_hex(STAMP_PAPER), 0);
     lv_obj_set_style_radius(ui.stamp, 6, 0);
-    ui.stamp_text = label(ui.stamp, &liang_font_stamp_34);
-    lv_obj_set_style_text_letter_space(ui.stamp_text, 4, 0);
+    // 阶段名与肖像下方共用同一套字形，避免盖章出现另一套名称。
+    ui.stamp_text = label(ui.stamp, &liang_font_name_28);
+    lv_obj_set_style_text_letter_space(ui.stamp_text, 2, 0);
     lv_obj_center(ui.stamp_text);
     lv_obj_add_flag(ui.stamp, LV_OBJ_FLAG_HIDDEN);
 

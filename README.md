@@ -8,7 +8,7 @@ A small firmware for the [FoloToy AI Passport](https://github.com/FoloToy/ai-pas
 
 > **Unofficial.** Not affiliated with FoloToy. Flashing replaces the firmware already on the device. Back up first if you still want that image. Proceed at your own risk.
 
-The board support and the baseline tree come from FoloToy's MIT firmware. This application's screens, logic, portraits, and voices are in the same repository, under the same MIT license ([`LICENSE`](LICENSE)). On-screen stage names and the two spoken identities are Chinese; they are listed in [`README.zh_CN.md`](README.zh_CN.md).
+The board support and the baseline tree come from FoloToy's MIT firmware. This application's screens, logic, portraits, and voices are in the same repository, under the same MIT license ([`LICENSE`](LICENSE)). The appraisal stamp and each spoken line use the current stage name; peak/idle pricing remains in the tag below the stamp. The stage names and scripts are listed in [`README.zh_CN.md`](README.zh_CN.md).
 
 <p align="center">
   <a href="https://x.com/cgnot996"><img src="https://img.shields.io/badge/X-%E9%93%81%E6%9F%B1AGI%20%40cgnot996-black?logo=x&logoColor=white" alt="X @cgnot996" /></a>
